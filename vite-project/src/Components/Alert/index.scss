@@ -1,0 +1,56 @@
+$border-color: rgba(255, 25, 0, 0.322);
+$errorBg: rgb(192 29 29/15%);
+$errorColor: #ef8d8dfa;
+
+$successBg: rgb(78, 189, 5);
+$successColor: #fff;
+
+$warningBg: rgb(130, 133, 6);
+$warningColor: #000;
+$trendingBg: rgb(7, 62, 94);
+@mixin Alert($name, $bgColor, $color) {
+  #{$name} {
+    border: 2px dotted $border-color;
+    background-color: $bgColor;
+    border-radius: 0.8rem;
+    padding: 1.3rem;
+    width: 85%;
+    margin: 1rem auto;
+    color: $color;
+    transition: all ease-in 0.62s;
+    &.hidden {
+      display: none;
+    }
+    .alert-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .alert-title {
+        display: flex;
+        align-items: center;
+      }
+      span svg {
+        margin-right: 0.6rem;
+      }
+      .close {
+        cursor: pointer;
+        font-weight: 700;
+        color: #fff;
+        background: red;
+        border-radius: 50%;
+        padding: 5px;
+      }
+    }
+    p {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+@include Alert(".alert-danger", $errorBg, $errorColor);
+@include Alert(".alert-success", $successBg, $successColor);
+@include Alert(".alert-warning", $warningBg, $warningColor);
+@include Alert(".alert-trending", $trendingBg, $successColor);
